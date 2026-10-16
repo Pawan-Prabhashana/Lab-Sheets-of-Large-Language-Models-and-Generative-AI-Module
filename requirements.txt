@@ -1,0 +1,24 @@
+# PUSL 3205 — Large Language Models & Generative AI — lab portfolio dependencies
+# Install into a virtual environment:  python -m venv venv && source venv/bin/activate
+#                                      pip install -r requirements.txt
+# Versions below are the ones the notebooks were executed with (Python 3.14).
+
+# --- Lab 1: Sentiment Analysis (traditional ML) ---
+pandas==3.0.6
+numpy==2.5.4
+scikit-learn==1.9.1
+matplotlib==3.11.2
+seaborn==0.13.2
+nltk==3.10.3
+certifi==2026.7.22          # CA bundle used for the dataset download (see Lab 1 notebook)
+
+# --- Lab 3: Tiny Transformer ---
+torch==2.14.1
+datasets==5.1.0             # streams a subset of roneneldan/TinyStories from Hugging Face
+
+# --- Running / executing the notebooks ---
+jupyter==1.1.1
+nbconvert==7.17.2
+ipykernel==7.4.0
+
+# Lab 2 (AI in Everyday Challenges) is a design task — no Python dependencies.

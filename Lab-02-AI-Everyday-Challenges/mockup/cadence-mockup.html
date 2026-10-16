@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadence — Main Screen Mock-up</title>
+<style>
+  :root{
+    --bg:#0f1226; --ink:#1d2033; --muted:#6b7190; --line:#e7e9f3;
+    --brand:#5b5bd6; --brand2:#8a6cf0; --accent:#19c37d; --warn:#f0724c;
+    --chip:#eef0fb; --card:#ffffff;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:var(--font); color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 15% -10%, #2a2f66 0%, transparent 55%),
+      radial-gradient(1000px 700px at 110% 20%, #3a2a66 0%, transparent 50%),
+      linear-gradient(160deg,#0f1226 0%, #16193a 100%);
+    min-height:100vh; padding:40px 20px;
+  }
+  .wrap{max-width:900px; margin:0 auto}
+  .masthead{text-align:center; color:#fff; margin-bottom:34px}
+  .logo{display:inline-flex; align-items:center; gap:10px; font-weight:800; font-size:26px; letter-spacing:-.5px}
+  .logo .dot{width:14px;height:14px;border-radius:50%;
+    background:linear-gradient(135deg,var(--brand2),var(--brand)); box-shadow:0 0 18px var(--brand2)}
+  .tag{color:#aab0d8; margin-top:8px; font-size:15px}
+
+  .screens{display:flex; gap:34px; justify-content:center; flex-wrap:wrap; align-items:flex-start}
+  .phonecol{display:flex; flex-direction:column; align-items:center; gap:12px}
+  .caption{color:#c7cbe8; font-size:13px; font-weight:600; letter-spacing:.3px; text-transform:uppercase}
+
+  .phone{
+    width:300px; background:#f6f7fc; border-radius:38px; padding:12px;
+    box-shadow:0 30px 60px rgba(8,10,30,.55), inset 0 0 0 2px rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .screen{background:#f6f7fc; border-radius:28px; overflow:hidden; position:relative}
+  .notch{height:26px; display:flex; justify-content:center}
+  .notch::after{content:""; width:120px; height:22px; background:#0f1226; border-radius:0 0 16px 16px}
+
+  .status{display:flex; justify-content:space-between; padding:2px 20px 8px; font-size:12px; color:var(--muted); font-weight:600}
+
+  .appbar{padding:4px 18px 14px; display:flex; justify-content:space-between; align-items:center}
+  .appbar .title{font-size:20px; font-weight:800; letter-spacing:-.3px}
+  .appbar .sub{font-size:12px; color:var(--muted); font-weight:600}
+  .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#8a6cf0,#5b5bd6);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+
+  .body{padding:0 16px 18px}
+
+  /* ---- Capture screen ---- */
+  .prompt{font-size:14px; color:var(--muted); font-weight:600; margin:2px 2px 8px}
+  .dump{
+    background:var(--card); border:1px solid var(--line); border-radius:18px; padding:14px;
+    font-size:13.5px; line-height:1.5; color:#2a2d44; box-shadow:0 6px 16px rgba(20,22,50,.06);
+  }
+  .dump .cursor{display:inline-block;width:2px;height:15px;background:var(--brand);vertical-align:-2px;
+    margin-left:1px; animation:blink 1s steps(2,start) infinite}
+  @keyframes blink{to{visibility:hidden}}
+  .mic{position:absolute; right:30px; bottom:120px; width:56px;height:56px;border-radius:50%;
+    background:linear-gradient(135deg,var(--brand2),var(--brand)); box-shadow:0 12px 24px rgba(91,91,214,.5);
+    display:flex;align-items:center;justify-content:center; color:#fff; font-size:22px}
+  .parsing{margin:14px 4px 0; font-size:12.5px; color:var(--muted); display:flex; align-items:center; gap:8px}
+  .spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--brand);
+    animation:sp .8s linear infinite}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:12px}
+  .chip{background:var(--chip); color:var(--brand); border-radius:999px; padding:5px 11px; font-size:11.5px; font-weight:700}
+  .chip.date{background:#eafaf2; color:#0f9d63}
+  .cta{margin:16px 2px 0; background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff;
+    text-align:center; padding:14px; border-radius:16px; font-weight:800; font-size:15px;
+    box-shadow:0 12px 24px rgba(91,91,214,.4)}
+
+  /* ---- Plan screen ---- */
+  .brief{background:linear-gradient(135deg,#eef0fb,#f3eefb); border:1px solid #e6e4fb; border-radius:16px;
+    padding:12px 14px; font-size:12.5px; color:#3a3f66; margin-bottom:12px}
+  .brief b{color:var(--brand)}
+  .atrisk{display:flex; align-items:center; gap:8px; background:#fff0ec; border:1px solid #ffd9cd;
+    color:#c0442a; border-radius:14px; padding:10px 12px; font-size:12px; font-weight:700; margin-bottom:12px}
+  .atrisk .ico{width:18px;height:18px;border-radius:50%;background:var(--warn);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:12px;flex:0 0 18px}
+
+  .tl{position:relative; padding-left:54px}
+  .slot{position:relative; margin-bottom:10px}
+  .time{position:absolute; left:-54px; top:12px; width:46px; text-align:right; font-size:11px; color:var(--muted); font-weight:700}
+  .block{border-radius:14px; padding:11px 13px; box-shadow:0 5px 14px rgba(20,22,50,.06); border:1px solid var(--line); background:var(--card)}
+  .block .h{display:flex; justify-content:space-between; align-items:center; gap:8px}
+  .block .name{font-size:13.5px; font-weight:700}
+  .block .meta{font-size:11px; color:var(--muted); margin-top:3px}
+  .pill{font-size:10px; font-weight:800; padding:3px 8px; border-radius:999px; white-space:nowrap}
+  .pill.fixed{background:#eef0fb; color:#5b5bd6}
+  .pill.high{background:#fdecec; color:#d84343}
+  .pill.focus{background:#eafaf2; color:#0f9d63}
+  .block.fixed{background:#fbfbff; border-style:dashed}
+  .block.high{border-left:4px solid var(--warn)}
+  .block.focus{border-left:4px solid var(--accent)}
+
+  .nudge{margin-top:6px; background:#0f1226; color:#e9ebfb; border-radius:16px; padding:12px 14px; font-size:12px; display:flex; gap:10px; align-items:flex-start}
+  .nudge .b{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand2),var(--brand));
+    display:flex;align-items:center;justify-content:center;font-size:14px;flex:0 0 26px}
+  .nudge b{color:#c9b6ff}
+
+  .tabbar{display:flex; justify-content:space-around; padding:12px 0 14px; border-top:1px solid var(--line); background:#fff; margin-top:14px}
+  .tabbar .t{font-size:18px; color:#c2c6de}
+  .tabbar .t.on{color:var(--brand)}
+
+  .foot{text-align:center;color:#7980ad;font-size:12px;margin-top:30px}
+  @media (max-width:680px){ body{padding:24px 12px} .screens{gap:24px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead">
+    <div class="logo"><span class="dot"></span>Cadence</div>
+    <div class="tag">Tell it your week in plain words. Get back a day you can actually follow.</div>
+  </div>
+
+  <div class="screens">
+
+    <!-- SCREEN 1: CAPTURE -->
+    <div class="phonecol">
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="status"><span>9:41</span><span>5G&nbsp;&nbsp;100%</span></div>
+          <div class="appbar">
+            <div>
+              <div class="title">Brain-dump</div>
+              <div class="sub">Just type it the way you'd say it</div>
+            </div>
+            <div class="avatar">DP</div>
+          </div>
+          <div class="body">
+            <div class="prompt">What's on your mind this week?</div>
+            <div class="dump">
+              Stats report due Friday, it's like 10 pages and worth 25%.
+              Group project meeting Tuesday 2pm. Need to read chapter 6
+              before Thursday's lecture. Gym sometime. Reply to Dr. Perera
+              about the extension<span class="cursor"></span>
+            </div>
+            <div class="parsing"><span class="spin"></span>Cadence is reading this&hellip; found 5 tasks</div>
+            <div class="chips">
+              <span class="chip">Stats report · 25%</span>
+              <span class="chip date">due Fri</span>
+              <span class="chip">Group meeting</span>
+              <span class="chip date">Tue 2pm</span>
+              <span class="chip">Read ch.6</span>
+              <span class="chip date">before Thu</span>
+              <span class="chip">Email Dr. Perera</span>
+            </div>
+            <div class="cta">Build my plan →</div>
+          </div>
+          <div class="mic">🎤</div>
+        </div>
+      </div>
+      <div class="caption">1 · Capture</div>
+    </div>
+
+    <!-- SCREEN 2: PLAN -->
+    <div class="phonecol">
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="status"><span>9:41</span><span>5G&nbsp;&nbsp;100%</span></div>
+          <div class="appbar">
+            <div>
+              <div class="title">Today · Wed</div>
+              <div class="sub">3 fixed · 2 focus blocks · 1 at risk</div>
+            </div>
+            <div class="avatar">DP</div>
+          </div>
+          <div class="body">
+            <div class="brief">
+              <b>Morning brief.</b> Your heaviest deadline is the stats report (Fri).
+              I protected a 2-hour afternoon block for it and pushed the reading to tomorrow.
+            </div>
+            <div class="atrisk"><span class="ico">!</span>Stats report is at risk — only 6 free hours before Friday</div>
+
+            <div class="tl">
+              <div class="slot">
+                <div class="time">10:00</div>
+                <div class="block fixed">
+                  <div class="h"><span class="name">Lecture — Databases</span><span class="pill fixed">FIXED</span></div>
+                  <div class="meta">Hall B · from your timetable</div>
+                </div>
+              </div>
+              <div class="slot">
+                <div class="time">13:30</div>
+                <div class="block high">
+                  <div class="h"><span class="name">Stats report — draft §1–2</span><span class="pill high">HIGH</span></div>
+                  <div class="meta">Focus block · 2h · step 1 of 4 toward Fri deadline</div>
+                </div>
+              </div>
+              <div class="slot">
+                <div class="time">16:00</div>
+                <div class="block focus">
+                  <div class="h"><span class="name">Read chapter 6</span><span class="pill focus">FOCUS</span></div>
+                  <div class="meta">45 min · ready for Thu's lecture</div>
+                </div>
+              </div>
+              <div class="slot">
+                <div class="time">17:00</div>
+                <div class="block">
+                  <div class="h"><span class="name">Email Dr. Perera</span><span class="pill" style="background:#eef0fb;color:#6b7190">QUICK</span></div>
+                  <div class="meta">5 min · clear it off your plate</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="nudge">
+              <span class="b">✦</span>
+              <div><b>Running late?</b> Tap once and I'll reshuffle the rest of the week —
+              the report stays protected, everything else flexes around it.</div>
+            </div>
+          </div>
+          <div class="tabbar">
+            <span class="t on">◱</span><span class="t">✎</span><span class="t">◷</span><span class="t">☰</span>
+          </div>
+        </div>
+      </div>
+      <div class="caption">2 · Plan &amp; adapt</div>
+    </div>
+
+  </div>
+
+  <div class="foot">Cadence · PUSL 3205 Lab 2 · Group 5 — The Busy Student · visual prototype (non-functional mock-up)</div>
+</div>
+</body>
+</html>
