@@ -16,6 +16,15 @@ certifi==2026.7.22          # CA bundle used for the dataset download (see Lab 1
 torch==2.14.1
 datasets==5.1.0             # streams a subset of roneneldan/TinyStories from Hugging Face
 
+# --- Lab 4: LoRA / QLoRA fine-tuning ---
+# The fine-tune itself requires a CUDA GPU (e.g. Google Colab T4); see Lab 4 REVIEW.md.
+transformers==5.20.2
+peft==0.21.2
+trl==1.16.0
+accelerate==1.15.0
+# bitsandbytes   # CUDA-only; install on the GPU machine for the QLoRA 4-bit path:
+#                #   pip install bitsandbytes
+
 # --- Running / executing the notebooks ---
 jupyter==1.1.1
 nbconvert==7.17.2

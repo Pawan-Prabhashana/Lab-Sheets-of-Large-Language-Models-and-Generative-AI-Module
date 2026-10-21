@@ -21,6 +21,10 @@ data/
 .cache/
 Lab-03-Tiny-Transformer/hf_cache/
 
+# Lab 4: training checkpoints / trainer output (regenerated on a GPU).
+# The small LoRA adapter (Lab-04-LoRA-FineTuning/corebyte_lora_adapter/) IS committed once generated.
+Lab-04-LoRA-FineTuning/outputs/sft/
+
 # The tiny transformer checkpoint (Lab-03-Tiny-Transformer/tiny_transformer.pt)
 # is intentionally COMMITTED — it is small (a few MB). Any larger experimental
 # checkpoints should be ignored here:
