@@ -1,71 +1,37 @@
-# PUSL 3205 — Large Language Models & Generative AI · Lab Portfolio
+# PUSL 3205, Large Language Models and Generative AI, Practical Portfolio
 
-This repository collects my three lab assignments for the **Large Language Models and Generative AI**
-module (BSc Data Science). The module moves from classical NLP up to building a Transformer from
-scratch, and these labs trace that arc: a traditional machine-learning sentiment classifier, an
-LLM-assisted product-design exercise, and a tiny GPT-style language model trained end to end.
+This repository is my individual practical portfolio for PUSL 3205. It documents the laboratory sessions for the module, which run from classical NLP up to building and orchestrating LLM systems: traditional machine learning, prompt and product design, a transformer built from scratch, parameter-efficient fine-tuning, Retrieval-Augmented Generation, and tool-using AI agents.
 
-Everything here is **executed and real** — the notebooks were run top to bottom, every plot is
-generated from the actual runs, and all reported metrics are captured from those runs (no invented
-numbers).
+Each lab is documented in its own folder with a README in the required format (Laboratory Session, Objective, Tasks and Implementation, Results and Evidence, Observations, Learning Outcomes), the code or notebooks, and screenshots or results as evidence. All metrics and screenshots are from my own real runs.
 
-## The labs
+## Labs
 
-| # | Lab | What it is | Key deliverables |
-|---|-----|------------|------------------|
-| 1 | [Sentiment Analysis](Lab-01-Sentiment-Analysis/) | Traditional ML sentiment classifier on the UCI Amazon/IMDb/Yelp reviews — preprocessing, Bag-of-Words, Logistic Regression vs Linear SVM. | [notebook](Lab-01-Sentiment-Analysis/sentiment_analysis.ipynb) · [review](Lab-01-Sentiment-Analysis/REVIEW.md) · [plots](Lab-01-Sentiment-Analysis/outputs/) |
-| 2 | [AI in Everyday Challenges](Lab-02-AI-Everyday-Challenges/) | Product-design task using an LLM as a development partner — *Cadence*, a time companion for the "Busy Student" scenario. | [concept](Lab-02-AI-Everyday-Challenges/product-concept.md) · [HTML mock-up](Lab-02-AI-Everyday-Challenges/mockup/cadence-mockup.html) · [review](Lab-02-AI-Everyday-Challenges/REVIEW.md) |
-| 3 | [Tiny Transformer](Lab-03-Tiny-Transformer/) | A decoder-only Transformer built from scratch in PyTorch, trained for next-character prediction on a subset of TinyStories. | [notebook](Lab-03-Tiny-Transformer/tiny_transformer.ipynb) · [review](Lab-03-Tiny-Transformer/REVIEW.md) · [plots](Lab-03-Tiny-Transformer/outputs/) |
-| 4 | [LoRA / QLoRA Fine-Tuning](Lab-04-LoRA-FineTuning/) | Parameter-efficient fine-tuning of SmolLM2-360M-Instruct on a custom computer-shop Q&A dataset, with before/after evaluation. **Needs a CUDA GPU** — see note below. | [notebook](Lab-04-LoRA-FineTuning/lora_finetuning.ipynb) · [dataset](Lab-04-LoRA-FineTuning/dataset/qa_pairs.json) · [review](Lab-04-LoRA-FineTuning/REVIEW.md) |
+| # | Lab | What it covers | Link |
+|---|-----|----------------|------|
+| 01 | Machine Learning | Traditional ML sentiment classifier (Bag of Words, Logistic Regression vs Linear SVM) | [Lab-01-Machine-Learning](Lab-01-Machine-Learning/) |
+| 02 | LLM in Everyday Life | Using an LLM as a product-development partner, the Busy Student scenario (Cadence) | [Lab-02-LLM-Everyday-Life](Lab-02-LLM-Everyday-Life/) |
+| 03 | Tiny Transformer | A decoder-only Transformer built from scratch in PyTorch, trained on TinyStories | [Lab-03-Tiny-Transformer](Lab-03-Tiny-Transformer/) |
+| 04 | Fine-Tune | Parameter-efficient fine-tuning with LoRA and QLoRA (SmolLM2 on a computer-shop dataset) | [Lab-04-Fine-Tune](Lab-04-Fine-Tune/) |
+| 05 | RAG Pipeline | Document-grounded QA with LangChain, ChromaDB, Ollama, and Streamlit, plus hybrid retrieval | [Lab-05-RAG-Pipeline](Lab-05-RAG-Pipeline/) |
+| 06 | AI Agents | A tool-using agent (calculator, memory, RAG, Google Calendar) and an n8n workflow version | [Lab-06-AI-Agents](Lab-06-AI-Agents/) |
+| , | Final Reflection | My reflection across the whole module | [Final-Reflection.md](Final-Reflection.md) |
 
 ## Tech stack
 
-- **Language:** Python 3
-- **Classical ML / NLP:** scikit-learn, NLTK, pandas, NumPy
-- **Deep learning:** PyTorch (Transformer implemented from scratch), Hugging Face `datasets`
-- **LLM fine-tuning:** Hugging Face `transformers`, PEFT (LoRA/QLoRA), TRL, `accelerate`, `bitsandbytes`
+- **Languages and core:** Python, Jupyter
+- **Classical ML and NLP:** scikit-learn, NLTK, pandas, NumPy
+- **Deep learning:** PyTorch (transformer from scratch), Hugging Face `transformers`, `datasets`
+- **Fine-tuning:** PEFT (LoRA and QLoRA), TRL, `accelerate`, `bitsandbytes`
+- **RAG and agents:** LangChain, ChromaDB, Ollama (Llama 3.2 3B, Qwen3 Embedding 0.6B), Streamlit
+- **Workflow automation:** n8n (Docker), Google Calendar, Sheets, and Docs APIs
 - **Visualisation:** Matplotlib, Seaborn
-- **Notebooks:** Jupyter / nbconvert
-- **Lab 2 prototype:** self-contained HTML + CSS (no dependencies)
+
+## How to run, and what needs a GPU or Ollama
+
+- **Labs 01 and 03** run on CPU. See each lab's README; Python dependencies are in the repo and in each lab.
+- **Lab 04** (QLoRA fine-tune) needs a CUDA GPU (for example a free Google Colab T4). The notebook is guarded so it skips the GPU-only cells on a machine without CUDA, and it does not fabricate results.
+- **Labs 05 and 06** need **Ollama** running locally with `llama3.2:3b` and `qwen3-embedding:0.6b` pulled, and Lab 06 Part E also uses **Docker** (for n8n). These were run on my machine; the evidence is in each lab's screenshots. Running them again means installing Ollama and the models, which is noted in each README. Secrets such as Google OAuth credentials are not committed; see the Lab 06 README for how to supply your own.
 
 ## Overall takeaways
 
-Working from a Bag-of-Words classifier up to a from-scratch Transformer in the same module made the
-*reason* for each leap tangible: Lab 1's models are fast and strong but blind to word order, which is
-exactly the limitation self-attention removes in Lab 3. Building attention, masking, and positional
-embeddings by hand — rather than importing a model — was the part that made LLMs stop feeling like a
-black box. And Lab 2 was a useful counterweight: the hardest part of applying an LLM well isn't the
-model, it's deciding *where* it belongs in a product and where deterministic logic should stay in
-charge.
-
-## How to run
-
-```bash
-# from the repo root
-python -m venv venv
-source venv/bin/activate          # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-jupyter notebook                  # then open either .ipynb and Run All
-```
-
-Both notebooks are committed **with their outputs already visible**, so you can read them without
-running anything. Lab 1 downloads its dataset programmatically; Lab 3 streams a small subset of
-TinyStories from Hugging Face — both need an internet connection the first time they run.
-
-**Lab 4 needs a GPU.** The LoRA/QLoRA fine-tune requires a CUDA GPU (QLoRA's 4-bit path is
-CUDA-only). It was authored on a Mac with no CUDA GPU, so — per the lab brief — the training/eval
-cells are guarded behind a hardware check and were **not executed locally** (no results were
-fabricated). To run it for real, open
-[`Lab-04-LoRA-FineTuning/lora_finetuning.ipynb`](Lab-04-LoRA-FineTuning/lora_finetuning.ipynb) in
-**Google Colab → Runtime → T4 GPU** and Run All. Full detail in that lab's
-[REVIEW.md](Lab-04-LoRA-FineTuning/REVIEW.md).
-
-**Notes**
-- The `venv/`, downloaded datasets (`data/`), the Hugging Face cache, and Lab 4's training
-  checkpoints are git-ignored (see [`.gitignore`](.gitignore)) because they're large and regenerated
-  on demand.
-- Lab 3's trained checkpoint (`Lab-03-Tiny-Transformer/tiny_transformer.pt`) is small (a few MB) and
-  **is** committed, so the model can be reloaded without retraining.
-- Lab 4's LoRA adapter is small (a few MB) and is committed **once generated on a GPU**; the base
-  model is downloaded from Hugging Face on demand and is not committed.
+The arc of the module made the reasons for each technique tangible. Lab 01's Bag of Words model is fast but blind to word order, which is exactly the limitation self-attention removes in Lab 03, and building attention and masking by hand is what made LLMs stop feeling like a black box. Labs 04, 05, and 06 then showed the three main ways to make a base model useful for a real task: change its weights (fine-tuning), give it the right documents at answer time (RAG), or let it act through tools (agents). My fuller reflection is in [Final-Reflection.md](Final-Reflection.md).
