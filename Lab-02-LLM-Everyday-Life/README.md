@@ -14,7 +14,7 @@ I produced two deliverables plus the required group activity write-ups:
 
 - **[`product-concept.md`](product-concept.md)**, the full concept for Cadence, a mobile time companion built around a Brain-dump, Plan, Adapt loop: problem framing, product name, six key features, the target user with a persona, and a section on exactly how an LLM powers each part.
 - **[`screenshots/cadence-mockup.html`](screenshots/cadence-mockup.html)**, a single self-contained HTML mock-up (inline CSS, no dependencies) of the two main screens, with a captured screenshot at [`screenshots/cadence-mockup.png`](screenshots/cadence-mockup.png).
-- **[`group-activity/`](group-activity/)**, the group members placeholder, the activity outcomes, and the discussion summary.
+- **[`group-activity/`](group-activity/)**, the activity outcomes and the discussion summary.
 
 My process was to drive the LLM rather than let it drive me. I started by making it pressure-test my problem framing until I had three concrete failure points (capture friction, no sense of time cost, and plans that break and never recover). I then had it brainstorm features and names, and I cut aggressively. An early "social study leaderboard" idea was dropped because it solved a motivation problem, not the time-management problem in the brief. The final feature set and the product decisions were mine; the LLM made the exploration faster and the microcopy sharper.
 
