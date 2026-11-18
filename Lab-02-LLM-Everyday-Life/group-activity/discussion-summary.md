@@ -1,22 +1,39 @@
 # Discussion Summary
 
-This activity was about using an LLM as a development partner, so the discussion was as much about *how* we worked with the model as about the product itself.
+This file summarises how our group worked through the Lab 2 activity, from framing the problem to settling on Cadence, and how we used an LLM as our development partner along the way.
 
-## How we used the LLM as a development partner
+## Framing the problem
 
-- **Problem framing.** We did not start by asking the LLM to design an app. We first made it pressure-test the Busy Student problem until we had three concrete failure points: capture friction, no sense of how long tasks really take, and plans that break the moment one thing goes wrong. Naming those failure points kept the rest of the work focused.
-- **Idea generation and pruning.** We used the model to brainstorm a wide set of features and product names, then cut aggressively. An early idea for a social study leaderboard was dropped because it solved a motivation problem rather than the time-management problem in the brief.
-- **Microcopy and framing.** The LLM was useful for drafting and tightening the short text shown in the mock-up, such as the morning brief and the at-risk message.
+We started with our scenario, Group 5, the Busy Student, and agreed early that the real problem was not laziness. Students miss deadlines because they lose visibility of what is due, how long it takes, and when they actually have time to do it. To keep ourselves focused, we named three failure points and kept coming back to them:
 
-## What we decided, and what the LLM decided
+1. Capture friction, where logging a task takes more effort than it is worth, so tasks never get written down.
+2. No sense of time cost, where a flat list shows what but not when or how long.
+3. Plans that break and never recover, where one missed afternoon makes the whole plan wrong.
 
-The product decisions were ours. The LLM made the exploration faster and the wording sharper, but the final cut of features, the core Brain-dump, Plan, Adapt loop, and the decision to keep deterministic logic in charge of the timetable and reminders were human choices.
+Every feature we kept had to answer at least one of these.
 
-## Key discussion point: where the LLM belongs
+## Using an LLM as our development partner
 
-The most valuable part of the discussion was deciding where the model should and should not run. The conclusion was that the LLM proposes (parsing, scheduling, explaining) while deterministic code holds the truth (timetable, done state, reminder timing). That boundary is what keeps the product trustworthy, because a hallucinated deadline would be worse than no plan at all.
+We used an LLM throughout the design process, not just as a feature inside the product.
+
+- **Brainstorming directions.** We asked it to generate a wide range of product ideas for the Busy Student, then clustered them into themes (reminders, capture, scheduling, and motivation).
+- **Pressure-testing the idea.** We made the model argue against our favourite direction. That is how we realised a plain reminder app would not solve the visibility problem, and that the value was in planning and rescheduling.
+- **Naming.** We generated and narrowed a shortlist of names and chose Cadence, because it captures the idea of a sustainable rhythm rather than a rigid schedule.
+- **Refining features and copy.** We used it to tighten the feature list and to draft the short microcopy shown in the mock-ups, such as the morning brief and the at-risk message.
+
+We treated the model as a fast, opinionated collaborator. The decisions were ours.
+
+## Decisions and alternatives we dropped
+
+- **Chose the Capture, Plan, Adapt loop** as the core, because it maps directly onto the three failure points.
+- **Dropped a social study leaderboard.** It was fun, but it solved a motivation problem, not the time-management problem in the brief.
+- **Dropped a pure voice assistant.** Voice stayed as an input option, but we decided the plan itself had to be visual so the student can see the day at a glance.
+- **Kept the LLM out of the source of truth.** We agreed the model should propose the plan while the timetable, reminders, and done state stay in deterministic logic, so the product never hallucinates a deadline. This was our most important design decision.
+
+## How we split the work
+
+SAP Prabhashana led the activity and carried the product concept and naming, the LLM integration design, the prototype and mock-ups, and the pitch deck. DD Rubasinghe contributed to feature definition and user-flow input and to the slide content. PGT Sewmini led the problem research, kept the discussion notes, and reviewed the visuals. The full split is in [`group-members.md`](group-members.md).
 
 ## Challenges
 
-- Scope creep. The first draft had far too many features, and the discipline was asking of each feature whether it solved the brief's problem.
-- Making the prototype show reasoning. We wanted the mock-up to communicate the thinking the LLM does, so we showed concrete artefacts of it, parsed task chips, an at-risk flag, and an explained morning brief, rather than generic placeholder UI.
+The main challenge was scope. Our first feature list was far too long, and the discipline that saved us was asking of every feature whether it solved one of the three failure points. The second challenge was making the prototype show the reasoning the LLM does, which we handled by putting concrete artefacts on the screens: parsed task chips, an at-risk flag, and an explained morning brief, rather than generic placeholder UI.
